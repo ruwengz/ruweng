@@ -1,0 +1,54 @@
+# Nebula Theme Configuration
+
+# Site Info
+site_name: TechShare
+site_description: 探索技术的无限可能
+site_author: 开发者小明
+
+# Navigation
+menu:
+  首页: /
+  日常: /categories/日常/
+  专题: /topics/
+  留言: /guestbook/
+  片刻: /moments/
+  关于: /about/
+
+# Social Links
+social:
+  GitHub: https://github.com/yourname
+  Twitter: https://twitter.com/yourname
+  Email: mailto:hello@example.com
+  RSS: /atom.xml
+
+# Site Statistics
+stats:
+  articles: 28
+  categories: 8
+  tags: 45
+  days: 365
+
+# Comment
+comment:
+  type: utterances
+  repo: yourname/yourblog
+  issue_term: pathname
+  label: comment
+
+# Gitalk (Alternative)
+# comment:
+#   type: gitalk
+#   client_id: your_client_id
+#   client_secret: your_client_secret
+#   repo: yourname.github.io
+#   owner: yourname
+#   admin: yourname
+
+# Busuanzi (Statistics)
+busuanzi: true
+
+# TOC (Table of Contents)
+toc: true
+
+# Code Highlight
+highlight_theme: atom-one-dark

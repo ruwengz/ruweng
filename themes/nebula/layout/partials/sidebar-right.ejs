@@ -1,0 +1,62 @@
+<!-- 右侧边栏内容 -->
+
+<!-- GitHub 贡献图 -->
+<div class="github-card">
+  <div class="github-header">
+    <span class="github-title">
+      <i class="fab fa-github"></i> GitHub
+    </span>
+    <span class="github-badge">
+      <i class="fas fa-circle"></i> Online
+    </span>
+  </div>
+  <div class="github-contribution">
+    <% for(let i = 0; i < 52; i++) { %>
+      <div class="contribution-cell level-<%= Math.floor(Math.random() * 5) %>"></div>
+    <% } %>
+  </div>
+  <div style="font-size: 0.75rem; color: #6e7681; margin-top: 10px;">
+    <%= Math.floor(Math.random() * 1000) + 500 %> contributions in the last year
+  </div>
+</div>
+
+<!-- About Me -->
+<div class="about-card">
+  <div class="about-avatar">👨‍💻</div>
+  <div class="about-name"><%= theme.site_author %></div>
+  <div class="about-bio">热爱技术，专注于前端开发与人工智能领域</div>
+  <div class="about-tags">
+    <span class="tech-tag">React</span>
+    <span class="tech-tag">TypeScript</span>
+    <span class="tech-tag">Node.js</span>
+    <span class="tech-tag">Python</span>
+    <span class="tech-tag">AI</span>
+  </div>
+</div>
+
+<!-- 猜你喜欢 -->
+<div class="popular-posts">
+  <div class="popular-title">猜你喜欢</div>
+  <div class="popular-list">
+    <% var popularPosts = site.posts.sort({views: -1}).limit(5); %>
+    <% popularPosts.forEach(function(post, i) { %>
+      <div class="popular-item">
+        <span class="popular-number"><%= String(i + 1).padStart(2, '0') %></span>
+        <div class="popular-info">
+          <a href="<%- url_for(post.path) %>" class="popular-link"><%= post.title %></a>
+          <span class="popular-stat">👁 <%= post.views || Math.floor(Math.random() * 1000) %></span>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</div>
+
+<!-- Newsletter -->
+<div class="newsletter">
+  <div class="newsletter-title">📬 订阅更新</div>
+  <div class="newsletter-desc">订阅我的博客，第一时间获取最新内容</div>
+  <form class="newsletter-form" onsubmit="return false;">
+    <input type="email" placeholder="your@email.com" required>
+    <button type="submit">订阅</button>
+  </form>
+</div>

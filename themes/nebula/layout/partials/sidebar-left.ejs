@@ -1,0 +1,99 @@
+<!-- 左侧边栏内容 -->
+<div class="logo">
+  <span class="logo-icon">🚀</span>
+  <span class="logo-text"><%= theme.site_name %></span>
+</div>
+
+<nav class="nav-menu">
+  <% var currentPath = page.path || ''; %>
+  <a href="/" class="nav-item <%= currentPath === '' || currentPath === 'index.html' ? 'active' : '' %>">
+    <span class="nav-icon">🏠</span>
+    <span>首页</span>
+  </a>
+  <a href="/categories/daily/" class="nav-item <%= currentPath.includes('daily') ? 'active' : '' %>">
+    <span class="nav-icon">💻</span>
+    <span>日常</span>
+  </a>
+  <a href="/topics/" class="nav-item <%= currentPath.includes('topics') ? 'active' : '' %>">
+    <span class="nav-icon">📚</span>
+    <span>专题</span>
+  </a>
+  <a href="/guestbook/" class="nav-item <%= currentPath.includes('guestbook') ? 'active' : '' %>">
+    <span class="nav-icon">✉️</span>
+    <span>留言</span>
+  </a>
+  <a href="/moments/" class="nav-item <%= currentPath.includes('moments') ? 'active' : '' %>">
+    <span class="nav-icon">⏱️</span>
+    <span>片刻</span>
+  </a>
+  <a href="/about/" class="nav-item <%= currentPath.includes('about') ? 'active' : '' %>">
+    <span class="nav-icon">📖</span>
+    <span>关于</span>
+  </a>
+</nav>
+
+<!-- 站点统计 -->
+<div class="stats-card">
+  <div class="stats-title">站点统计</div>
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-value"><%= theme.stats.articles %></span>
+      <span class="stat-label">文章</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value"><%= theme.stats.categories %></span>
+      <span class="stat-label">分类</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value"><%= theme.stats.tags %></span>
+      <span class="stat-label">标签</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value"><%= theme.stats.days %></span>
+      <span class="stat-label">天数</span>
+    </div>
+  </div>
+</div>
+
+<!-- 标签云 -->
+<div class="tags-cloud">
+  <div class="tags-title">热门标签</div>
+  <div class="tag-list">
+    <% site.tags.forEach(function(tag) { %>
+      <a href="<%- url_for('/tags/' + tag.name) %>" class="tag-item"><%= tag.name %></a>
+    <% }); %>
+    <!-- 示例标签 -->
+    <a href="#" class="tag-item">React</a>
+    <a href="#" class="tag-item">Vue</a>
+    <a href="#" class="tag-item">Node.js</a>
+    <a href="#" class="tag-item">Python</a>
+    <a href="#" class="tag-item">AI</a>
+    <a href="#" class="tag-item">Docker</a>
+    <a href="#" class="tag-item">TypeScript</a>
+    <a href="#" class="tag-item">Git</a>
+  </div>
+</div>
+
+<!-- 社交链接 -->
+<div class="social-links">
+  <% if (theme.social.GitHub) { %>
+    <a href="<%= theme.social.GitHub %>" class="social-btn" target="_blank" title="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  <% } %>
+  <% if (theme.social.Twitter) { %>
+    <a href="<%= theme.social.Twitter %>" class="social-btn" target="_blank" title="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+  <% } %>
+  <% if (theme.social.Email) { %>
+    <a href="<%= theme.social.Email %>" class="social-btn" target="_blank" title="Email">
+      <i class="fas fa-envelope"></i>
+    </a>
+  <% } %>
+  <% if (theme.social.RSS) { %>
+    <a href="<%= url_for(theme.social.RSS) %>" class="social-btn" target="_blank" title="RSS">
+      <i class="fas fa-rss"></i>
+    </a>
+  <% } %>
+</div>

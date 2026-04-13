@@ -1,0 +1,867 @@
+<%- include('partials/header') %>
+
+<!-- 背景动效 -->
+<div class="bg-animation"></div>
+<div class="grid-overlay"></div>
+
+<div class="container">
+  <div class="main-layout">
+    
+    <!-- 左侧边栏 -->
+    <aside class="sidebar-left">
+      <%- include('partials/sidebar-left') %>
+    </aside>
+    
+    <!-- 主内容区 -->
+    <main class="main-content page-content">
+      
+      <% if (page.type === 'about') { %>
+        <!-- 关于页面 -->
+        <div class="page-header">
+          <h1 class="page-title">关于我</h1>
+          <p class="page-subtitle">热爱技术，热爱分享</p>
+        </div>
+        
+        <div class="about-section">
+          <div class="about-profile">
+            <div class="profile-avatar">👨‍💻</div>
+            <div class="profile-info">
+              <h2><%= config.author %></h2>
+              <p class="profile-bio">全栈开发工程师 | 技术博主 | 开源贡献者</p>
+            </div>
+          </div>
+          
+          <div class="about-content">
+            <div class="content-block">
+              <h3>📝 个人简介</h3>
+              <p>你好！我是小明，一名热爱技术的全栈开发工程师。我喜欢探索新技术，分享开发经验，希望能帮助更多开发者成长。</p>
+              <p>当前主要专注于前端开发（React/Vue）、Node.js 后端开发以及人工智能应用方向。</p>
+            </div>
+            
+            <div class="content-block">
+              <h3>💼 技术栈</h3>
+              <div class="tech-stack">
+                <div class="tech-category">
+                  <h4>前端</h4>
+                  <div class="tech-tags">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Vue</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                  </div>
+                </div>
+                <div class="tech-category">
+                  <h4>后端</h4>
+                  <div class="tech-tags">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Go</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Redis</span>
+                  </div>
+                </div>
+                <div class="tech-category">
+                  <h4>DevOps & AI</h4>
+                  <div class="tech-tags">
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">Kubernetes</span>
+                    <span class="tech-tag">AWS</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">PyTorch</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="content-block">
+              <h3>🎯 建站目的</h3>
+              <ul class="about-list">
+                <li>📚 记录学习历程，总结技术经验</li>
+                <li>🤝 结识志同道合的开发者朋友</li>
+                <li>🚀 分享有价值的开源项目和技术文章</li>
+                <li>💡 持续输出高质量的技术内容</li>
+              </ul>
+            </div>
+            
+            <div class="content-block">
+              <h3>📬 联系方式</h3>
+              <div class="contact-links">
+                <a href="https://github.com/yourname" target="_blank" class="contact-item">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://twitter.com/yourname" target="_blank" class="contact-item">
+                  <i class="fab fa-twitter"></i> Twitter
+                </a>
+                <a href="mailto:hello@example.com" class="contact-item">
+                  <i class="fas fa-envelope"></i> Email
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      <% } else if (page.type === 'guestbook') { %>
+        <!-- 留言页面 -->
+        <div class="page-header">
+          <h1 class="page-title">留言板</h1>
+          <p class="page-subtitle">有问题？想说点什么？在这里留下你的足迹吧！</p>
+        </div>
+        
+        <div class="guestbook-form">
+          <div class="form-group">
+            <input type="text" placeholder="昵称 *" required class="form-input">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <input type="email" placeholder="邮箱（选填）" class="form-input">
+            </div>
+            <div class="form-group">
+              <input type="url" placeholder="网站（选填）" class="form-input">
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea placeholder="写下你的留言..." required class="form-textarea"></textarea>
+          </div>
+          <div class="form-footer">
+            <span class="char-count">0 / 500</span>
+            <button type="submit" class="submit-btn">发布留言</button>
+          </div>
+        </div>
+        
+        <div class="guestbook-filters">
+          <span class="filter-tag active">全部 (12)</span>
+          <span class="filter-tag">技术交流 (5)</span>
+          <span class="filter-tag">友链申请 (3)</span>
+          <span class="filter-tag">闲聊 (4)</span>
+        </div>
+        
+        <div class="guestbook-list">
+          <div class="guestbook-item">
+            <div class="guestbook-avatar">🧑‍💻</div>
+            <div class="guestbook-content">
+              <div class="guestbook-header">
+                <span class="guestbook-name">技术达人</span>
+                <span class="guestbook-time">2024-03-15</span>
+              </div>
+              <p class="guestbook-text">写得真棒！学到了很多关于 React Hooks 的知识，期待更多精彩内容！</p>
+              <div class="guestbook-actions">
+                <button class="action-btn">回复</button>
+                <button class="action-btn">引用</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="guestbook-item">
+            <div class="guestbook-avatar">👩‍🎨</div>
+            <div class="guestbook-content">
+              <div class="guestbook-header">
+                <span class="guestbook-name">设计喵</span>
+                <span class="guestbook-time">2024-03-10</span>
+              </div>
+              <p class="guestbook-text">友链已添加，期待长期合作！加油！💪</p>
+              <div class="guestbook-actions">
+                <button class="action-btn">回复</button>
+                <button class="action-btn">引用</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="guestbook-item">
+            <div class="guestbook-avatar">🚀</div>
+            <div class="guestbook-content">
+              <div class="guestbook-header">
+                <span class="guestbook-name">路过的小伙伴</span>
+                <span class="guestbook-time">2024-03-05</span>
+              </div>
+              <p class="guestbook-text">博客主题很酷！请问可以分享一下吗？</p>
+              <div class="guestbook-actions">
+                <button class="action-btn">回复</button>
+                <button class="action-btn">引用</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      <% } else if (page.type === 'moments') { %>
+        <!-- 片刻页面 -->
+        <div class="page-header">
+          <h1 class="page-title">片刻</h1>
+          <p class="page-subtitle">碎片化的想法，灵感的闪现</p>
+        </div>
+        
+        <div class="moments-grid">
+          <div class="moment-card type-inspiration">
+            <div class="moment-icon">💡</div>
+            <div class="moment-content">
+              <p>刚刚想到一个绝妙的产品 idea！用 AI 来帮助程序员写注释和文档，完美解决"命名焦虑症" 😂</p>
+              <span class="moment-time">2小时前</span>
+            </div>
+          </div>
+          
+          <div class="moment-card type-share">
+            <div class="moment-icon">🔗</div>
+            <div class="moment-content">
+              <p>分享一个超好用的 VS Code 主题：Dracula Pro</p>
+              <a href="#" class="moment-link">github.com/dracula/vscode</a>
+              <span class="moment-time">5小时前</span>
+            </div>
+          </div>
+          
+          <div class="moment-card type-quote">
+            <div class="moment-icon">📝</div>
+            <div class="moment-content">
+              <blockquote>"任何足够先进的技术，都与魔法无异。" —— Arthur C. Clarke</blockquote>
+              <span class="moment-time">昨天</span>
+            </div>
+          </div>
+          
+          <div class="moment-card type-music">
+            <div class="moment-icon">🎵</div>
+            <div class="moment-content">
+              <p>coding 时听的歌：Lo-Fi Hip Hop Radio 📻</p>
+              <span class="moment-tag">专注工作</span>
+              <span class="moment-time">昨天</span>
+            </div>
+          </div>
+          
+          <div class="moment-card type-photo">
+            <div class="moment-icon">📸</div>
+            <div class="moment-content">
+              <p>新入手的机械键盘到了！TTC 轴手感超棒！</p>
+              <div class="moment-image">⌨️</div>
+              <span class="moment-time">3天前</span>
+            </div>
+          </div>
+          
+          <div class="moment-card type-thought">
+            <div class="moment-icon">🤔</div>
+            <div class="moment-content">
+              <p>最近在思考：TypeScript 到底适不适合所有项目？团队规模小的时候是不是用 JavaScript 更高效？</p>
+              <span class="moment-time">3天前</span>
+            </div>
+          </div>
+        </div>
+        
+      <% } else if (page.type === 'topics') { %>
+        <!-- 专题页面 -->
+        <div class="page-header">
+          <h1 class="page-title">技术专题</h1>
+          <p class="page-subtitle">系统化的学习路径，完整的实战系列</p>
+        </div>
+        
+        <div class="topics-grid">
+          <div class="topic-card">
+            <div class="topic-cover" style="background: linear-gradient(135deg, #61dafb, #21a8d8);">
+              ⚛️
+            </div>
+            <div class="topic-info">
+              <span class="topic-level level-2">进阶</span>
+              <h3 class="topic-title">React 18 完全指南</h3>
+              <p class="topic-desc">从基础到精通，深入理解 React 18 新特性与最佳实践</p>
+              <div class="topic-meta">
+                <span>📄 12 篇文章</span>
+                <span>⏱ 约 6 小时</span>
+              </div>
+              <a href="#" class="topic-link">开始学习 →</a>
+            </div>
+          </div>
+          
+          <div class="topic-card">
+            <div class="topic-cover" style="background: linear-gradient(135deg, #3178c6, #235a97);">
+              📘
+            </div>
+            <div class="topic-info">
+              <span class="topic-level level-3">高级</span>
+              <h3 class="topic-title">TypeScript 类型体操</h3>
+              <p class="topic-desc">玩转 TypeScript 高级类型，写出更健壮的代码</p>
+              <div class="topic-meta">
+                <span>📄 8 篇文章</span>
+                <span>⏱ 约 4 小时</span>
+              </div>
+              <a href="#" class="topic-link">开始学习 →</a>
+            </div>
+          </div>
+          
+          <div class="topic-card">
+            <div class="topic-cover" style="background: linear-gradient(135deg, #68a063, #3c873a);">
+              🐍
+            </div>
+            <div class="topic-info">
+              <span class="topic-level level-1">入门</span>
+              <h3 class="topic-title">Python 机器学习实战</h3>
+              <p class="topic-desc">使用 Python 和 Scikit-learn 实现机器学习算法</p>
+              <div class="topic-meta">
+                <span>📄 15 篇文章</span>
+                <span>⏱ 约 8 小时</span>
+              </div>
+              <a href="#" class="topic-link">开始学习 →</a>
+            </div>
+          </div>
+          
+          <div class="topic-card">
+            <div class="topic-cover" style="background: linear-gradient(135deg, #2496ed, #1b73ba);">
+              🐳
+            </div>
+            <div class="topic-info">
+              <span class="topic-level level-2">进阶</span>
+              <h3 class="topic-title">Docker 容器化部署</h3>
+              <p class="topic-desc">从零掌握 Docker，构建高效的开发和部署流程</p>
+              <div class="topic-meta">
+                <span>📄 10 篇文章</span>
+                <span>⏱ 约 5 小时</span>
+              </div>
+              <a href="#" class="topic-link">开始学习 →</a>
+            </div>
+          </div>
+          
+          <div class="topic-card">
+            <div class="topic-cover" style="background: linear-gradient(135deg, #68a063, #f7df1e);">
+              📜
+            </div>
+            <div class="topic-info">
+              <span class="topic-level level-2">进阶</span>
+              <h3 class="topic-title">GraphQL 入门到精通</h3>
+              <p class="topic-desc">告别 RESTful API，开启 API 开发新范式</p>
+              <div class="topic-meta">
+                <span>📄 6 篇文章</span>
+                <span>⏱ 约 3 小时</span>
+              </div>
+              <a href="#" class="topic-link">开始学习 →</a>
+            </div>
+          </div>
+          
+          <div class="topic-card">
+            <div class="topic-cover" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);">
+              🤖
+            </div>
+            <div class="topic-info">
+              <span class="topic-level level-3">高级</span>
+              <h3 class="topic-title">AI 大模型应用开发</h3>
+              <p class="topic-desc">基于 OpenAI API 开发智能应用，实战案例分享</p>
+              <div class="topic-meta">
+                <span>📄 9 篇文章</span>
+                <span>⏱ 约 5 小时</span>
+              </div>
+              <a href="#" class="topic-link">开始学习 →</a>
+            </div>
+          </div>
+        </div>
+        
+      <% } else { %>
+        <!-- 默认页面内容 -->
+        <div class="page-header">
+          <h1 class="page-title"><%= page.title %></h1>
+        </div>
+        <div class="page-body">
+          <%- page.content %>
+        </div>
+      <% } %>
+      
+    </main>
+    
+    <!-- 右侧边栏 -->
+    <aside class="sidebar-right">
+      <%- include('partials/sidebar-right') %>
+    </aside>
+    
+  </div>
+</div>
+
+<%- include('partials/footer') %>
+
+<style>
+/* 页面通用样式 */
+.page-content {
+  padding-top: 20px;
+}
+
+.page-header {
+  margin-bottom: 30px;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f0f6fc;
+  margin-bottom: 10px;
+}
+
+.page-subtitle {
+  color: #8b949e;
+  font-size: 1rem;
+}
+
+/* 关于页面 */
+.about-section {
+  background: #1e2530;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+
+.about-profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(168, 85, 247, 0.1));
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #58a6ff, #a855f7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+.profile-info h2 {
+  font-size: 1.5rem;
+  color: #f0f6fc;
+  margin-bottom: 5px;
+}
+
+.profile-bio {
+  color: #8b949e;
+  font-size: 0.9rem;
+}
+
+.about-content {
+  padding: 30px;
+}
+
+.content-block {
+  margin-bottom: 30px;
+}
+
+.content-block:last-child {
+  margin-bottom: 0;
+}
+
+.content-block h3 {
+  font-size: 1.1rem;
+  color: #f0f6fc;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.content-block p {
+  color: #c9d1d9;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.tech-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tech-category h4 {
+  font-size: 0.9rem;
+  color: #58a6ff;
+  margin-bottom: 10px;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tag {
+  padding: 6px 14px;
+  background: #161b22;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #8b949e;
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background: rgba(88, 166, 255, 0.15);
+  color: #58a6ff;
+  border-color: rgba(88, 166, 255, 0.3);
+}
+
+.about-list {
+  list-style: none;
+  padding: 0;
+}
+
+.about-list li {
+  padding: 10px 0;
+  color: #c9d1d9;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.about-list li:last-child {
+  border-bottom: none;
+}
+
+.contact-links {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #161b22;
+  border-radius: 25px;
+  color: #8b949e;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  background: #58a6ff;
+  color: white;
+}
+
+/* 留言页面 */
+.guestbook-form {
+  background: #1e2530;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: #161b22;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: #f0f6fc;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+  color: #6e7681;
+}
+
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.char-count {
+  color: #6e7681;
+  font-size: 0.85rem;
+}
+
+.submit-btn {
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #58a6ff, #a855f7);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(88, 166, 255, 0.3);
+}
+
+.guestbook-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.guestbook-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.guestbook-item {
+  display: flex;
+  gap: 15px;
+  background: #1e2530;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 20px;
+}
+
+.guestbook-avatar {
+  width: 45px;
+  height: 45px;
+  background: #161b22;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.guestbook-content {
+  flex: 1;
+}
+
+.guestbook-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.guestbook-name {
+  font-weight: 600;
+  color: #f0f6fc;
+}
+
+.guestbook-time {
+  font-size: 0.8rem;
+  color: #6e7681;
+}
+
+.guestbook-text {
+  color: #c9d1d9;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.guestbook-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  padding: 5px 12px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 15px;
+  color: #8b949e;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  background: rgba(88, 166, 255, 0.1);
+  color: #58a6ff;
+  border-color: rgba(88, 166, 255, 0.3);
+}
+
+/* 片刻页面 */
+.moments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.moment-card {
+  background: #1e2530;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.moment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+.moment-icon {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.moment-content p {
+  color: #c9d1d9;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.moment-content blockquote {
+  color: #8b949e;
+  font-style: italic;
+  border-left: 3px solid #58a6ff;
+  padding-left: 12px;
+  margin: 0;
+}
+
+.moment-link {
+  display: block;
+  color: #58a6ff;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.moment-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  background: rgba(88, 166, 255, 0.1);
+  color: #58a6ff;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  margin-bottom: 8px;
+}
+
+.moment-image {
+  font-size: 3rem;
+  text-align: center;
+  padding: 20px;
+  background: #161b22;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.moment-time {
+  display: block;
+  font-size: 0.75rem;
+  color: #6e7681;
+  margin-top: 10px;
+}
+
+/* 专题页面 */
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+}
+
+.topic-card {
+  background: #1e2530;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.topic-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  border-color: rgba(88, 166, 255, 0.3);
+}
+
+.topic-cover {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.topic-info {
+  padding: 20px;
+}
+
+.topic-level {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.level-1 {
+  background: rgba(0, 255, 136, 0.15);
+  color: #00ff88;
+}
+
+.level-2 {
+  background: rgba(88, 166, 255, 0.15);
+  color: #58a6ff;
+}
+
+.level-3 {
+  background: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
+}
+
+.topic-title {
+  font-size: 1.2rem;
+  color: #f0f6fc;
+  margin-bottom: 10px;
+}
+
+.topic-desc {
+  color: #8b949e;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.topic-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 0.8rem;
+  color: #6e7681;
+  margin-bottom: 15px;
+}
+
+.topic-link {
+  display: inline-block;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #58a6ff, #a855f7);
+  border-radius: 20px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.topic-link:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(88, 166, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .topics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .moments-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

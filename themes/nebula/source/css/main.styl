@@ -1,0 +1,766 @@
+// ============================================
+// Nebula Theme - 科技风深色主题样式
+// ============================================
+
+// ============================================
+// 变量定义
+// ============================================
+$bg-primary = #0d1117
+$bg-secondary = #161b22
+$bg-card = #1e2530
+$bg-hover = #263341
+
+$accent-primary = #58a6ff
+$accent-secondary = #a855f7
+$accent-tertiary = #00ff88
+
+$text-primary = #f0f6fc
+$text-secondary = #8b949e
+$text-muted = #6e7681
+
+$border-color = rgba(255, 255, 255, 0.1)
+$border-glow = rgba(88, 166, 255, 0.3)
+
+$font-main = 'Inter', 'Noto Sans SC', -apple-system, sans-serif
+$font-code = 'JetBrains Mono', 'Fira Code', monospace
+
+$radius-sm = 8px
+$radius-md = 12px
+$radius-lg = 16px
+
+$shadow-sm = 0 2px 8px rgba(0, 0, 0, 0.3)
+$shadow-md = 0 4px 16px rgba(0, 0, 0, 0.4)
+$shadow-glow = 0 0 20px rgba(88, 166, 255, 0.2)
+
+// ============================================
+// 全局样式
+// ============================================
+*, *::before, *::after
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+
+html
+  scroll-behavior: smooth
+  font-size: 16px
+
+body
+  font-family: $font-main
+  background-color: $bg-primary
+  color: $text-primary
+  line-height: 1.7
+  min-height: 100vh
+  overflow-x: hidden
+
+a
+  color: $accent-primary
+  text-decoration: none
+  transition: all 0.3s ease
+  
+  &:hover
+    color: lighten($accent-primary, 15%)
+    text-decoration: none
+
+// ============================================
+// 背景动效
+// ============================================
+.bg-animation
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  pointer-events: none
+  z-index: -1
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(88, 166, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(0, 255, 136, 0.03) 0%, transparent 70%)
+
+.grid-overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  pointer-events: none
+  z-index: -1
+  background-image: 
+    linear-gradient(rgba(88, 166, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(88, 166, 255, 0.03) 1px, transparent 1px)
+  background-size: 50px 50px
+
+// ============================================
+// 布局容器
+// ============================================
+.container
+  max-width: 1400px
+  margin: 0 auto
+  padding: 0 20px
+
+.main-layout
+  display: grid
+  grid-template-columns: 260px 1fr 300px
+  gap: 30px
+  padding-top: 30px
+  min-height: calc(100vh - 200px)
+  
+  +media-query-down(md)
+    grid-template-columns: 1fr
+    
+  +media-query-up(lg)
+    grid-template-columns: 240px 1fr 280px
+
+// ============================================
+// 侧边栏 - 左侧
+// ============================================
+.sidebar-left
+  position: sticky
+  top: 30px
+  height: fit-content
+  
+  +media-query-down(md)
+    display: none
+
+.logo
+  text-align: center
+  padding: 20px
+  margin-bottom: 20px
+  
+  .logo-icon
+    font-size: 2.5rem
+    background: linear-gradient(135deg, $accent-primary, $accent-secondary)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    background-clip: text
+  
+  .logo-text
+    display: block
+    font-size: 1.5rem
+    font-weight: 700
+    color: $text-primary
+    margin-top: 10px
+    letter-spacing: 2px
+
+.nav-menu
+  background: $bg-card
+  border-radius: $radius-lg
+  padding: 20px 0
+  border: 1px solid $border-color
+  
+  .nav-item
+    display: flex
+    align-items: center
+    padding: 14px 24px
+    color: $text-secondary
+    font-size: 0.95rem
+    transition: all 0.3s ease
+    border-left: 3px solid transparent
+    
+    .nav-icon
+      font-size: 1.2rem
+      margin-right: 12px
+      width: 24px
+      text-align: center
+    
+    &:hover, &.active
+      background: $bg-hover
+      color: $text-primary
+      border-left-color: $accent-primary
+    
+    &.active
+      background: rgba($accent-primary, 0.1)
+      
+// Stats Card
+.stats-card
+  background: $bg-card
+  border-radius: $radius-lg
+  padding: 20px
+  margin-top: 20px
+  border: 1px solid $border-color
+  
+  .stats-title
+    font-size: 0.8rem
+    color: $text-muted
+    text-transform: uppercase
+    letter-spacing: 1px
+    margin-bottom: 15px
+  
+  .stats-grid
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: 15px
+    
+    .stat-item
+      text-align: center
+      padding: 12px 8px
+      background: $bg-secondary
+      border-radius: $radius-sm
+      
+      .stat-value
+        font-size: 1.5rem
+        font-weight: 700
+        color: $accent-primary
+        display: block
+      
+      .stat-label
+        font-size: 0.75rem
+        color: $text-muted
+        margin-top: 4px
+
+// Tags Cloud
+.tags-cloud
+  background: $bg-card
+  border-radius: $radius-lg
+  padding: 20px
+  margin-top: 20px
+  border: 1px solid $border-color
+  
+  .tags-title
+    font-size: 0.9rem
+    color: $text-secondary
+    margin-bottom: 15px
+    display: flex
+    align-items: center
+    
+    &::before
+      content: ''
+      width: 4px
+      height: 16px
+      background: linear-gradient(180deg, $accent-primary, $accent-secondary)
+      border-radius: 2px
+      margin-right: 10px
+  
+  .tag-list
+    display: flex
+    flex-wrap: wrap
+    gap: 8px
+    
+    .tag-item
+      padding: 6px 12px
+      background: $bg-secondary
+      border-radius: 20px
+      font-size: 0.8rem
+      color: $text-secondary
+      transition: all 0.3s ease
+      border: 1px solid transparent
+      
+      &:hover
+        background: rgba($accent-primary, 0.15)
+        color: $accent-primary
+        border-color: rgba($accent-primary, 0.3)
+
+// Social Links
+.social-links
+  display: flex
+  justify-content: center
+  gap: 15px
+  margin-top: 20px
+  padding: 15px
+  
+  .social-btn
+    width: 40px
+    height: 40px
+    display: flex
+    align-items: center
+    justify-content: center
+    background: $bg-card
+    border-radius: 50%
+    color: $text-secondary
+    font-size: 1.1rem
+    transition: all 0.3s ease
+    border: 1px solid $border-color
+    
+    &:hover
+      background: $accent-primary
+      color: $bg-primary
+      transform: translateY(-3px)
+      box-shadow: $shadow-glow
+
+// ============================================
+// 主内容区
+// ============================================
+.main-content
+  min-width: 0
+
+// Banner
+.banner
+  position: relative
+  height: 350px
+  border-radius: $radius-lg
+  overflow: hidden
+  margin-bottom: 30px
+  background: linear-gradient(135deg, $bg-card, $bg-secondary)
+  
+  .banner-image
+    width: 100%
+    height: 100%
+    object-fit: cover
+    opacity: 0.6
+  
+  .banner-overlay
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: linear-gradient(180deg, transparent 0%, rgba($bg-primary, 0.9) 100%)
+  
+  .banner-content
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    padding: 30px
+    color: $text-primary
+    
+    .banner-title
+      font-size: 2rem
+      font-weight: 700
+      margin-bottom: 10px
+      
+    .banner-subtitle
+      font-size: 1rem
+      color: $text-secondary
+      max-width: 600px
+
+// Filter Tags
+.filter-tags
+  display: flex
+  flex-wrap: wrap
+  gap: 10px
+  margin-bottom: 25px
+  
+  .filter-tag
+    padding: 8px 18px
+    background: $bg-card
+    border-radius: 25px
+    font-size: 0.85rem
+    color: $text-secondary
+    border: 1px solid $border-color
+    cursor: pointer
+    transition: all 0.3s ease
+    
+    &:hover, &.active
+      background: rgba($accent-primary, 0.15)
+      color: $accent-primary
+      border-color: rgba($accent-primary, 0.4)
+    
+    &.active
+      background: $accent-primary
+      color: $bg-primary
+
+// Article Card
+.article-list
+  display: flex
+  flex-direction: column
+  gap: 20px
+
+.article-card
+  background: $bg-card
+  border-radius: $radius-lg
+  overflow: hidden
+  border: 1px solid $border-color
+  transition: all 0.3s ease
+  display: grid
+  grid-template-columns: 280px 1fr
+  
+  +media-query-down(sm)
+    grid-template-columns: 1fr
+  
+  &:hover
+    transform: translateY(-4px)
+    box-shadow: $shadow-glow
+    border-color: rgba($accent-primary, 0.3)
+  
+  .article-image
+    width: 100%
+    height: 200px
+    object-fit: cover
+    
+    +media-query-down(sm)
+      height: 180px
+  
+  .article-content
+    padding: 25px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    
+    .article-meta
+      display: flex
+      align-items: center
+      gap: 15px
+      font-size: 0.8rem
+      color: $text-muted
+      margin-bottom: 12px
+      
+      .article-date::before
+        content: '📅 '
+      
+      .article-category
+        padding: 3px 10px
+        background: rgba($accent-primary, 0.15)
+        color: $accent-primary
+        border-radius: 12px
+        font-size: 0.75rem
+    
+    .article-title
+      font-size: 1.3rem
+      font-weight: 600
+      color: $text-primary
+      margin-bottom: 12px
+      line-height: 1.4
+      display: -webkit-box
+      -webkit-line-clamp: 2
+      -webkit-box-orient: vertical
+      overflow: hidden
+      
+      &:hover
+        color: $accent-primary
+    
+    .article-excerpt
+      font-size: 0.9rem
+      color: $text-secondary
+      line-height: 1.6
+      display: -webkit-box
+      -webkit-line-clamp: 3
+      -webkit-box-orient: vertical
+      overflow: hidden
+      margin-bottom: 15px
+    
+    .article-footer
+      display: flex
+      align-items: center
+      justify-content: space-between
+      
+      .article-stats
+        display: flex
+        gap: 20px
+        font-size: 0.8rem
+        color: $text-muted
+        
+        span::before
+          margin-right: 5px
+          opacity: 0.7
+      
+      .read-more
+        padding: 8px 18px
+        background: linear-gradient(135deg, $accent-primary, $accent-secondary)
+        color: white
+        border-radius: 20px
+        font-size: 0.85rem
+        font-weight: 500
+        transition: all 0.3s ease
+        
+        &:hover
+          transform: translateX(5px)
+          box-shadow: $shadow-glow
+
+// ============================================
+// 侧边栏 - 右侧
+// ============================================
+.sidebar-right
+  position: sticky
+  top: 30px
+  height: fit-content
+  
+  +media-query-down(md)
+    display: none
+
+// GitHub Card
+.github-card
+  background: $bg-card
+  border-radius: $radius-lg
+  padding: 20px
+  border: 1px solid $border-color
+  
+  .github-header
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin-bottom: 15px
+    
+    .github-title
+      font-size: 0.9rem
+      font-weight: 600
+      color: $text-primary
+    
+    .github-badge
+      padding: 4px 10px
+      background: $accent-tertiary
+      color: $bg-primary
+      border-radius: 12px
+      font-size: 0.7rem
+      font-weight: 600
+  
+  .github-contribution
+    display: grid
+    grid-template-columns: repeat(52, 1fr)
+    gap: 2px
+    
+    .contribution-cell
+      width: 10px
+      height: 10px
+      border-radius: 2px
+      background: $bg-secondary
+      
+      &.level-1
+        background: rgba($accent-tertiary, 0.3)
+      &.level-2
+        background: rgba($accent-tertiary, 0.5)
+      &.level-3
+        background: rgba($accent-tertiary, 0.7)
+      &.level-4
+        background: $accent-tertiary
+
+// About Card
+.about-card
+  background: $bg-card
+  border-radius: $radius-lg
+  padding: 25px
+  margin-top: 20px
+  border: 1px solid $border-color
+  text-align: center
+  
+  .about-avatar
+    width: 80px
+    height: 80px
+    border-radius: 50%
+    margin: 0 auto 15px
+    background: linear-gradient(135deg, $accent-primary, $accent-secondary)
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 2rem
+    
+  .about-name
+    font-size: 1.2rem
+    font-weight: 600
+    color: $text-primary
+    margin-bottom: 8px
+  
+  .about-bio
+    font-size: 0.85rem
+    color: $text-secondary
+    margin-bottom: 15px
+  
+  .about-tags
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    gap: 8px
+    
+    .tech-tag
+      padding: 4px 10px
+      background: $bg-secondary
+      border-radius: 12px
+      font-size: 0.75rem
+      color: $text-muted
+      border: 1px solid $border-color
+
+// Popular Posts
+.popular-posts
+  background: $bg-card
+  border-radius: $radius-lg
+  padding: 20px
+  margin-top: 20px
+  border: 1px solid $border-color
+  
+  .popular-title
+    font-size: 0.9rem
+    font-weight: 600
+    color: $text-primary
+    margin-bottom: 15px
+    display: flex
+    align-items: center
+    
+    &::before
+      content: ''
+      width: 4px
+      height: 16px
+      background: linear-gradient(180deg, $accent-primary, $accent-secondary)
+      border-radius: 2px
+      margin-right: 10px
+  
+  .popular-list
+    .popular-item
+      display: flex
+      gap: 12px
+      padding: 12px 0
+      border-bottom: 1px solid $border-color
+      
+      &:last-child
+        border-bottom: none
+      
+      .popular-number
+        width: 24px
+        height: 24px
+        background: $bg-secondary
+        border-radius: 6px
+        display: flex
+        align-items: center
+        justify-content: center
+        font-size: 0.75rem
+        font-weight: 600
+        color: $accent-primary
+        flex-shrink: 0
+      
+      .popular-info
+        flex: 1
+        min-width: 0
+        
+        .popular-link
+          font-size: 0.85rem
+          color: $text-secondary
+          display: block
+          white-space: nowrap
+          overflow: hidden
+          text-overflow: ellipsis
+          
+          &:hover
+            color: $accent-primary
+        
+        .popular-stat
+          font-size: 0.75rem
+          color: $text-muted
+          margin-top: 4px
+
+// Newsletter
+.newsletter
+  background: linear-gradient(135deg, rgba($accent-primary, 0.1), rgba($accent-secondary, 0.1))
+  border-radius: $radius-lg
+  padding: 25px
+  margin-top: 20px
+  border: 1px solid rgba($accent-primary, 0.2)
+  
+  .newsletter-title
+    font-size: 1rem
+    font-weight: 600
+    color: $text-primary
+    margin-bottom: 8px
+  
+  .newsletter-desc
+    font-size: 0.85rem
+    color: $text-secondary
+    margin-bottom: 15px
+  
+  .newsletter-form
+    display: flex
+    gap: 10px
+    
+    input
+      flex: 1
+      padding: 10px 15px
+      background: $bg-secondary
+      border: 1px solid $border-color
+      border-radius: $radius-sm
+      color: $text-primary
+      font-size: 0.85rem
+      
+      &::placeholder
+        color: $text-muted
+      
+      &:focus
+        outline: none
+        border-color: $accent-primary
+    
+    button
+      padding: 10px 20px
+      background: linear-gradient(135deg, $accent-primary, $accent-secondary)
+      border: none
+      border-radius: $radius-sm
+      color: white
+      font-size: 0.85rem
+      font-weight: 500
+      cursor: pointer
+      transition: all 0.3s ease
+      
+      &:hover
+        transform: translateY(-2px)
+        box-shadow: $shadow-glow
+
+// ============================================
+// 页脚
+// ============================================
+.footer
+  margin-top: 60px
+  padding: 40px 0
+  background: $bg-secondary
+  border-top: 1px solid $border-color
+  
+  .footer-content
+    display: flex
+    justify-content: space-between
+    align-items: center
+    flex-wrap: wrap
+    gap: 20px
+    
+    .footer-copyright
+      font-size: 0.85rem
+      color: $text-muted
+      
+      a
+        color: $accent-primary
+    
+    .footer-links
+      display: flex
+      gap: 20px
+      
+      a
+        font-size: 0.85rem
+        color: $text-secondary
+        
+        &:hover
+          color: $accent-primary
+
+// ============================================
+// 响应式
+// ============================================
+media-query-up(sm)
+  .container
+    padding: 0 30px
+
+media-query-up(md)
+  .container
+    padding: 0 40px
+
+media-query-up(lg)
+  .container
+    padding: 0 50px
+
+// ============================================
+// 辅助类
+// ============================================
+.text-gradient
+  background: linear-gradient(135deg, $accent-primary, $accent-secondary)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  background-clip: text
+
+.glass
+  background: rgba($bg-card, 0.8)
+  backdrop-filter: blur(10px)
+  -webkit-backdrop-filter: blur(10px)
+
+.mt-20
+  margin-top: 20px
+
+.mb-20
+  margin-bottom: 20px
+
+// ============================================
+// 滚动条
+// ============================================
+::-webkit-scrollbar
+  width: 8px
+
+::-webkit-scrollbar-track
+  background: $bg-secondary
+
+::-webkit-scrollbar-thumb
+  background: $bg-hover
+  border-radius: 4px
+
+::-webkit-scrollbar-thumb:hover
+  background: rgba($accent-primary, 0.5)
