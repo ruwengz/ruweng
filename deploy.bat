@@ -7,20 +7,15 @@ echo.
 
 cd /d "%~dp0"
 
-echo [1/4] 清理缓存...
-call npx hexo clean
+echo [1/4] 修复评论配置...
+call node fix-comment.js
 
 echo.
-echo [2/4] 生成静态文件...
-call npx hexo generate
-
-echo.
-echo [3/4] 部署到 GitHub...
-call npx hexo deploy
+echo [2/4] 部署到 GitHub...
+xcopy /s /y public\* ..\ruweng\ 2>nul
 
 echo.
 echo ========================================
 echo   部署完成！
-echo   访问: https://yourname.github.io
 echo ========================================
 pause
