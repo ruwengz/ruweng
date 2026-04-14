@@ -31,7 +31,7 @@ stats:
 # Comment
 comment:
   type: utterances
-  repo: ruwengz
+  repo: ruwengz/ruweng
   issue_term: pathname
   label: comment
 
